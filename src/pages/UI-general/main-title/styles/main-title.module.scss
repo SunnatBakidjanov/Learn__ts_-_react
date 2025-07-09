@@ -8,7 +8,7 @@
 .auth {
 	@include font-mixins.furore-regular;
 
-	font-size: 3.2rem;
-	color: var(--font-accent-color);
-	text-align: center;
+	margin-bottom: 20px;
+	font-size: 2.25rem;
+	color: var(--primary-color);
 }

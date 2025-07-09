@@ -2,10 +2,11 @@
 	padding: 0 15px;
 }
 
-.wrappper {
+.wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	row-gap: 3rem;
 }
 
 .innerTitle {
@@ -15,19 +16,30 @@
 	row-gap: 1rem;
 }
 
+.innerForm {
+	display: flex;
+	align-items: center;
+	width: 1410px;
+}
+
 .blink {
+	width: 0.3rem;
+	height: 1.85rem;
+	background-color: var(--accent-color);
+	transition: background-color var(--transition-change-color);
+	animation: blink 0.8s linear infinite;
+
 	@keyframes blink {
 		0% {
 			opacity: 0;
 		}
 
-		100% {
+		50% {
 			opacity: 1;
 		}
-	}
 
-	width: 0.3rem;
-	height: 2rem;
-	background-color: black;
-	animation: blink 0.8s linear infinite;
+		100% {
+			opacity: 0;
+		}
+	}
 }

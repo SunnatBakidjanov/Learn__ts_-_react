@@ -1,0 +1,10 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	padding: 3rem 2.25rem;
+	row-gap: 2rem;
+	width: 100%;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px var(--primary-color);
+	transition: box-shadow var(--transition-change-color);
+}

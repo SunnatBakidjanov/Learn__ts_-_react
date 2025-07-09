@@ -7,13 +7,15 @@ html.no-theme-transition * {
 }
 
 :root[data-theme='light'] {
-	--font-primary-color: #000;
-	--font-accent-color: #3493ff;
+	--primary-color: #000;
+	--reverse-primary-color: #fff;
+	--accent-color: #3493ff;
 }
 
 :root[data-theme='dark'] {
-	--font-primary-color: #fff;
-	--font-accent-color: #ff9d00;
+	--primary-color: #fff;
+	--reverse-primary-color: #000;
+	--accent-color: #ff9d00;
 }
 
 @font-face {

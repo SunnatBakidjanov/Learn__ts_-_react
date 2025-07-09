@@ -1,0 +1,9 @@
+@use '../../../../../app/styles/mixins/font-mixins.scss';
+
+.root {
+	@include font-mixins.furore-regular;
+
+	font-size: 2.25rem;
+	color: var(--accent-color);
+	transition: color var(--transition-change-color);
+}

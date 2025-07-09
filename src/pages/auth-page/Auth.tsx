@@ -1,23 +1,25 @@
-import { useTranslation } from 'react-i18next';
-import { MainTitle } from '../UI-general/main-title/MainTitle';
-import { ToggleThemeButton } from '../UI-general/toggle-theme-button/ToggleThemeButton';
+import { Form } from './UI/form/Form';
+import { useSetCurrentTheme } from '../../hooks/useSetCurrentTheme';
+import { SecondTitle } from './UI/second-title/SecondTitle';
 
 import styles from './styles/auth-root.module.scss';
 import classNames from 'classnames';
 
 export const Auth = () => {
-	const { t } = useTranslation('auth');
+	useSetCurrentTheme();
 
 	return (
 		<section className={classNames(styles.section)}>
 			<div className={classNames(styles.wrapper)}>
 				<div className={classNames(styles.innerTitle)}>
-					<MainTitle text={t('mainTitle')} styleUsePlace="auth" />
+					<SecondTitle />
 
 					<span className={styles.blink}></span>
 				</div>
 
-				<ToggleThemeButton />
+				<div className={classNames(styles.innerForm)}>
+					<Form />
+				</div>
 			</div>
 		</section>
 	);
