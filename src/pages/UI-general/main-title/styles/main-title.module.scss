@@ -1,9 +1,14 @@
+@use '../../../../app/styles/mixins/font-mixins.scss';
+
 .root {
-	font-family: Tinos, serif;
-	font-weight: 400;
-	line-height: 125%;
+	line-height: 100%;
+	transition: color var(--transition-change-color);
 }
 
-.authTitle {
-	font-size: 1.25rem;
+.auth {
+	@include font-mixins.furore-regular;
+
+	font-size: 3.2rem;
+	color: var(--font-accent-color);
+	text-align: center;
 }

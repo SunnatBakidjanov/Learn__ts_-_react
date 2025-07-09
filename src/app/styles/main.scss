@@ -1,1 +1,50 @@
-@import 'https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap';
+html.no-theme-transition * {
+	transition: none !important;
+}
+
+:root {
+	--transition-change-color: 0.2s ease-out;
+}
+
+:root[data-theme='light'] {
+	--font-primary-color: #000;
+	--font-accent-color: #3493ff;
+}
+
+:root[data-theme='dark'] {
+	--font-primary-color: #fff;
+	--font-accent-color: #ff9d00;
+}
+
+@font-face {
+	font-family: Tinos;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../../assets/fonts/tinos/Tinos-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Tinos;
+	font-style: normal;
+	font-weight: 700;
+	src: url('../../assets/fonts/tinos/Tinos-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Tinos;
+	font-style: italic;
+	font-weight: 400;
+	src: url('../../assets/fonts/tinos/Tinos-Italic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Tinos;
+	font-style: italic;
+	font-weight: 700;
+	src: url('../../assets/fonts/tinos/Tinos-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Furore;
+	src: url('../../assets/fonts/Furore/Furore.otf');
+}

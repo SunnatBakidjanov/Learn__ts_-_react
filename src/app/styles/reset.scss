@@ -1,0 +1,35 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+ul,
+ul li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+button {
+	display: inline-block;
+	background: none;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+label {
+	cursor: pointer;
+}
+
+input {
+	border: none;
+	outline: none;
+}
