@@ -1,0 +1,37 @@
+@use '../../../../app/styles/mixins/font-mixins.scss';
+
+@mixin button-hover-1 {
+	&:hover {
+		transition:
+			color 0.1s ease-in,
+			letter-spacing 0.1s ease-in,
+			box-shadow 0.1s ease-in,
+			background-color 0.1s ease-in;
+		color: var(--primary-color);
+		letter-spacing: 1.5px;
+		background-color: var(--reverse-accent-color);
+		box-shadow: 0 2px 5px var(--primary-color);
+	}
+}
+
+.root {
+	transition:
+		color var(--transition-change-color),
+		letter-spacing var(--transition-change-color),
+		box-shadow var(--transition-change-color),
+		background-color var(--transition-change-color);
+}
+
+.auth {
+	@include font-mixins.furore-regular;
+	@include button-hover-1;
+
+	margin-top: 1rem;
+	width: 100%;
+	height: 45px;
+	font-size: 1.25rem;
+	color: var(--reverse-primary-color);
+	letter-spacing: 1px;
+	background-color: var(--accent-color);
+	border-radius: 5px;
+}

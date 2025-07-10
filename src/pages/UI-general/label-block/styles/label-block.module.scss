@@ -37,6 +37,7 @@
 	@include font-mixins.tinos-regular;
 
 	width: 100%;
+	height: 100%;
 	color: var(--primary-color);
 	background-color: var(--reverse-primary-color);
 	transition:
@@ -50,7 +51,7 @@
 }
 
 .inputSize400 {
-	padding: 0.5rem 1rem;
+	padding: 0 1rem;
 	font-size: 1.25rem;
 
 	&::placeholder {

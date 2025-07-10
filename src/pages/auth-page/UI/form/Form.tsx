@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { LabelBlock } from '../../../UI-general/label-block/LabelBlock';
 import { Title } from '../title/Title';
+import { SubmitBtn } from '../../../UI-general/submit-btn/SubmitBtn';
 
 import styles from '../form/styles/form.module.scss';
 import classNames from 'classnames';
@@ -56,6 +57,8 @@ export const Form = () => {
 				styleSize="400"
 				inputName="repeatPassword"
 			/>
+
+			<SubmitBtn ariaLabel="Sign up" text={t('form.submitBtn')} styleUsePlace="auth" />
 		</form>
 	);
 };

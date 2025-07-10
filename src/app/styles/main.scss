@@ -10,12 +10,14 @@ html.no-theme-transition * {
 	--primary-color: #000;
 	--reverse-primary-color: #fff;
 	--accent-color: #3493ff;
+	--reverse-accent-color: #ff9d00;
 }
 
 :root[data-theme='dark'] {
 	--primary-color: #fff;
 	--reverse-primary-color: #000;
 	--accent-color: #ff9d00;
+	--reverse-accent-color: #3493ff;
 }
 
 @font-face {
