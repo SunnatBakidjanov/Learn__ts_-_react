@@ -2,15 +2,23 @@ import { useTranslation } from 'react-i18next';
 import { LabelBlock } from '../../../UI-general/label-block/LabelBlock';
 import { Title } from '../title/Title';
 import { SubmitBtn } from '../../../UI-general/submit-btn/SubmitBtn';
-
 import styles from '../form/styles/form.module.scss';
 import classNames from 'classnames';
+import { useAuthform } from './hooks/useAuthForm';
 
 export const Form = () => {
 	const { t } = useTranslation();
+	const { setField, state, handleSubmit } = useAuthform();
+	const { name, lastName, password, email, repeatPassword } = state;
 
 	return (
-		<form className={classNames(styles.form)}>
+		<form
+			className={classNames(styles.form)}
+			onSubmit={e => {
+				e.preventDefault();
+				handleSubmit();
+			}}
+		>
 			<Title />
 
 			<LabelBlock
@@ -20,6 +28,8 @@ export const Form = () => {
 				text={t('form.text.name')}
 				styleSize="400"
 				inputName="name"
+				value={name}
+				onChange={e => setField('name', e.target.value)}
 			/>
 
 			<LabelBlock
@@ -29,6 +39,8 @@ export const Form = () => {
 				text={t('form.text.lastName')}
 				styleSize="400"
 				inputName="lastName"
+				value={lastName}
+				onChange={e => setField('lastName', e.target.value)}
 			/>
 
 			<LabelBlock
@@ -38,27 +50,38 @@ export const Form = () => {
 				text={t('form.text.email')}
 				styleSize="400"
 				inputName="email"
+				value={email}
+				onChange={e => setField('email', e.target.value)}
 			/>
 
 			<LabelBlock
 				placeholder={t('form.placeholder.password')}
-				type="text"
+				type="password"
 				isRenderText={true}
 				text={t('form.text.password')}
 				styleSize="400"
 				inputName="password"
+				value={password}
+				onChange={e => setField('password', e.target.value)}
 			/>
 
 			<LabelBlock
 				placeholder={t('form.placeholder.repeatPassword')}
-				type="text"
+				type="password"
 				isRenderText={true}
 				text={t('form.text.repeatPassword')}
 				styleSize="400"
 				inputName="repeatPassword"
+				value={repeatPassword}
+				onChange={e => setField('repeatPassword', e.target.value)}
 			/>
 
-			<SubmitBtn ariaLabel="Sign up" text={t('form.submitBtn')} styleUsePlace="auth" />
+			<SubmitBtn
+				ariaLabel="Sign up"
+				text={t('form.submitBtn')}
+				styleUsePlace="auth"
+				type="submit"
+			/>
 		</form>
 	);
 };

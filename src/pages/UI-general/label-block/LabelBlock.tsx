@@ -1,3 +1,4 @@
+import type { ChangeEventHandler } from 'react';
 import styles from './styles/label-block.module.scss';
 import classNames from 'classnames';
 
@@ -8,6 +9,8 @@ type LabelBlock = {
 	inputName: string;
 	isRenderText?: boolean;
 	text?: string;
+	onChange?: ChangeEventHandler<HTMLInputElement>;
+	value?: string;
 };
 
 export const LabelBlock = ({
@@ -17,6 +20,8 @@ export const LabelBlock = ({
 	text = '',
 	isRenderText = false,
 	inputName,
+	onChange,
+	value,
 }: LabelBlock) => {
 	return (
 		<div
@@ -46,7 +51,15 @@ export const LabelBlock = ({
 					name={inputName}
 					type={type}
 					placeholder={placeholder}
+					onChange={onChange}
+					value={value}
 				/>
+
+				<span
+					className={classNames(styles.underlineRoot, {
+						[styles.underlineSize400]: styleSize === '400',
+					})}
+				></span>
 			</label>
 		</div>
 	);

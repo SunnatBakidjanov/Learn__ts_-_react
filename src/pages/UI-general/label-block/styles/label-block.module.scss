@@ -9,12 +9,31 @@
 	row-gap: 0.25rem;
 }
 
+.underlineRoot {
+	position: absolute;
+	width: 0;
+	background-color: var(--accent-color);
+	will-change: width;
+	transition: width 0.2s ease-out;
+}
+
+.underlineSize400 {
+	bottom: -3px;
+	height: 3px;
+}
+
 .labelRoot {
+	position: relative;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	width: 100%;
 	border-bottom: 1px solid var(--primary-color);
 	transition: border-bottom var(--transition-change-color);
+
+	&:focus-within .underlineRoot {
+		width: 100%;
+	}
 }
 
 .labelSize400 {
