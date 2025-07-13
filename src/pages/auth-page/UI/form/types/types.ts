@@ -6,26 +6,24 @@ type AuthFormState = {
 	lastName: string;
 	password: string;
 	repeatPassword?: string;
-	isLoading?: boolean;
+	isLoading: boolean;
 };
 
 type AllowedFields = 'name' | 'lastName' | 'email' | 'password' | 'repeatPassword';
 
-type SetFieldAction = {
-	type: typeof ACTIONS.SET_FIELD;
-	field: AllowedFields;
-	payload: string;
-};
+interface RegisterResponse {
+	success: boolean;
+	message: string;
+	user: {
+		email: string;
+		name: string;
+		lastName: string;
+	};
+}
 
-type ClearFormAction = {
-	type: typeof ACTIONS.CLEAR_FORM;
-};
+type ReducerAction =
+	| { type: typeof ACTIONS.SET_FIELD; field: AllowedFields; payload: string }
+	| { type: typeof ACTIONS.CLEAR_FORM }
+	| { type: typeof ACTIONS.SET_LOADER; payload: boolean };
 
-type SetLoaderAction = {
-	type: typeof ACTIONS.SET_LOADER;
-	payload: boolean;
-};
-
-type ReducerAction = SetFieldAction | ClearFormAction | SetLoaderAction;
-
-export type { ReducerAction, AuthFormState, AllowedFields };
+export type { ReducerAction, AuthFormState, AllowedFields, RegisterResponse };

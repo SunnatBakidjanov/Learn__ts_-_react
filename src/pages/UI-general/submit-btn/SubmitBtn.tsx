@@ -1,15 +1,6 @@
-import type { ReactNode } from 'react';
-
+import type { SubmitBtnProps } from './types/types';
 import classNames from 'classnames';
 import styles from './styles/submit-btn.module.scss';
-
-type SubmitBtnProps = {
-	type?: 'button' | 'submit' | 'reset';
-	text?: string;
-	ariaLabel: string;
-	children?: ReactNode;
-	styleUsePlace: string;
-};
 
 export const SubmitBtn = ({
 	type = 'button',
@@ -17,6 +8,7 @@ export const SubmitBtn = ({
 	text,
 	children,
 	styleUsePlace,
+	isDisabled = false,
 }: SubmitBtnProps) => {
 	return (
 		<button
@@ -25,6 +17,7 @@ export const SubmitBtn = ({
 			})}
 			type={type}
 			aria-label={ariaLabel}
+			disabled={isDisabled}
 		>
 			{children ?? text}
 		</button>

@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import type { AuthFormState, ReducerAction, AllowedFields } from '../types/types';
+import type { AuthFormState, ReducerAction, AllowedFields, RegisterResponse } from '../types/types';
 import { ACTIONS } from '../scripts/actionConstants';
 import axios from 'axios';
 
@@ -12,7 +12,7 @@ const initialState: AuthFormState = {
 	isLoading: false,
 };
 
-const reducer = (state: AuthFormState, action: ReducerAction) => {
+const reducer: React.Reducer<AuthFormState, ReducerAction> = (state, action) => {
 	switch (action.type) {
 		case ACTIONS.SET_FIELD:
 			return { ...state, [action.field]: action.payload };
@@ -39,16 +39,20 @@ export const useAuthform = () => {
 		dispatch({ type: ACTIONS.SET_LOADER, payload: true });
 
 		try {
-			const res = await axios.post('http://localhost:3000/api/users/register', {
-				email: state.email,
-				name: state.name,
-				lastName: state.lastName,
-				password: state.password,
-			});
+			const { data } = await axios.post<RegisterResponse>(
+				'http://localhost:3000/api/users/register',
+				{
+					email: state.email,
+					name: state.name,
+					lastName: state.lastName,
+					password: state.password,
+				}
+			);
 
 			dispatch({ type: ACTIONS.CLEAR_FORM });
 		} catch (error) {
 			const err = error as Error;
+			console.error(err.message);
 		} finally {
 			dispatch({ type: ACTIONS.SET_LOADER, payload: false });
 		}

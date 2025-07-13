@@ -1,17 +1,6 @@
-import type { ChangeEventHandler } from 'react';
+import type { LabelBlockProps } from './types/types';
 import styles from './styles/label-block.module.scss';
 import classNames from 'classnames';
-
-type LabelBlock = {
-	placeholder: string;
-	type: string;
-	styleSize: string;
-	inputName: string;
-	isRenderText?: boolean;
-	text?: string;
-	onChange?: ChangeEventHandler<HTMLInputElement>;
-	value?: string;
-};
 
 export const LabelBlock = ({
 	placeholder,
@@ -22,7 +11,8 @@ export const LabelBlock = ({
 	inputName,
 	onChange,
 	value,
-}: LabelBlock) => {
+	isRequired = true,
+}: LabelBlockProps) => {
 	return (
 		<div
 			className={classNames(styles.blockRoot, {
@@ -53,6 +43,7 @@ export const LabelBlock = ({
 					placeholder={placeholder}
 					onChange={onChange}
 					value={value}
+					required={isRequired}
 				/>
 
 				<span
