@@ -1,12 +1,5 @@
-import { useReducer, useEffect, useRef } from 'react';
-import type {
-	AuthFormState,
-	ReducerAction,
-	AllowedFields,
-	RegisterResponse,
-	ErrorMessages,
-	AuthFileds,
-} from '../types/types';
+import { useReducer } from 'react';
+import type { AuthFormState, ReducerAction, AllowedFields, RegisterResponse } from '../types/types';
 import { validateAuthForm } from '../scripts/validateAuthForm';
 import { ACTIONS } from '../scripts/actionConstants';
 import axios from 'axios';
