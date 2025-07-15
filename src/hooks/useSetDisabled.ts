@@ -4,7 +4,7 @@ export const useSetDisabled = () => {
 	const [isDisabled, setDisabled] = useState(false);
 	const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	const toggleDisabled = (time = 400) => {
+	const toggleDisabled = (time: 400 | number = 400) => {
 		setDisabled(true);
 
 		if (timerRef.current) {

@@ -30,6 +30,16 @@ label {
 }
 
 input {
+	color: var(--primary-color);
+	background-color: transparent;
+	transition: color var(--transition-change-color);
 	border: none;
 	outline: none;
+}
+
+input:-webkit-autofill {
+	-webkit-text-fill-color: var(--primary-color) !important;
+	transition:
+		background-color 999999s ease-in-out 0s,
+		color var(--transition-change-color);
 }

@@ -48,6 +48,7 @@ export const useAuthform = () => {
 
 	const setField = (field: AllowedFields, payload: string) => {
 		dispatch({ type: ACTIONS.SET_FIELD, field, payload });
+		dispatch({ type: ACTIONS.SHOW_ERRORS, payload: 'SUCCESS' });
 	};
 
 	const handleSubmit = async () => {

@@ -3,11 +3,12 @@ html.no-theme-transition * {
 }
 
 :root {
+	// transition
 	--transition-change-color: 0.2s ease-out;
-}
 
-body {
-	background-color: white;
+	// z-index
+	--bg-color-index: 1;
+	--main-content-index: 5;
 }
 
 :root[data-theme='light'] {
@@ -17,6 +18,11 @@ body {
 	--accent-color: #009cfd;
 	--accent-white-color: #009cfd;
 	--reverse-accent-color: #b14fc0;
+
+	// specific place
+
+	// auth-login
+	--auth-login-form-bg-color: rgb(255 255 255 / 70%);
 }
 
 :root[data-theme='dark'] {
@@ -26,6 +32,11 @@ body {
 	--accent-color: #b14fc0;
 	--accent-white-color: #fff;
 	--reverse-accent-color: #009cfd;
+
+	// specific place
+
+	// auth-login
+	--auth-login-form-bg-color: rgb(0 0 0 / 50%);
 }
 
 @font-face {

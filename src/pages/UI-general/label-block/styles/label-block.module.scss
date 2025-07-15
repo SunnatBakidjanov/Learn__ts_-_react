@@ -14,7 +14,9 @@
 	width: 0;
 	background-color: var(--accent-color);
 	will-change: width;
-	transition: width 0.2s ease-out;
+	transition:
+		width 0.2s ease-out,
+		background-color var(--transition-change-color);
 }
 
 .underlineSize400 {
@@ -59,7 +61,7 @@
 	height: 100%;
 	color: var(--primary-color);
 	letter-spacing: 0.25px;
-	background-color: rgba($color: var(--primary-color), $alpha: 20%);
+	background-color: rgb(0 0 0 / 0%);
 	transition:
 		color var(--transition-change-color),
 		background-color var(--transition-change-color);
@@ -67,6 +69,7 @@
 	&::placeholder {
 		color: var(--primary-color);
 		opacity: 0.8;
+		transition: color var(--transition-change-color);
 	}
 }
 

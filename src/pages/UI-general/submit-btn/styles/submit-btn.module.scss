@@ -14,8 +14,8 @@
 .root {
 	transition:
 		color var(--transition-change-color),
-		letter-spacing var(--transition-change-color),
-		box-shadow var(--transition-change-color),
+		letter-spacing 0.2s ease-out,
+		box-shadow 0.2s ease-out,
 		background-color var(--transition-change-color);
 }
 

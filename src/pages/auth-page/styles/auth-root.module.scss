@@ -1,3 +1,9 @@
+.page {
+	min-height: 100vh;
+	background-color: var(--reverse-primary-color);
+	transition: background-color var(--transition-change-color);
+}
+
 .section {
 	padding: 0 15px;
 }
@@ -18,33 +24,16 @@
 }
 
 .innerForm {
-	z-index: 2;
+	z-index: var(--main-content-index);
 	display: flex;
 	flex-direction: column;
 	padding: 3rem 2.25rem;
 	width: 1410px;
-	background-color: rgba($color: white, $alpha: 50%);
+	background-color: var(--auth-login-form-bg-color);
 	border-radius: 10px;
 	row-gap: 3rem;
 	box-shadow: 0 5px 20px var(--accent-color);
 	transition: box-shadow var(--transition-change-color);
-}
-
-.background {
-	position: absolute;
-	z-index: 1;
-	left: 50%;
-	width: 100%;
-	height: 100%;
-	background: radial-gradient(
-		circle at center,
-		var(--accent-color) 20%,
-		var(--reverse-primary-color) 100%
-	);
-	border-radius: 100%;
-	opacity: 0.6;
-	transform: translateX(-50%);
-	filter: blur(350px);
 }
 
 .blink {
