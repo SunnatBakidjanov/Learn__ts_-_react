@@ -174,7 +174,8 @@
 				"selector-class-pattern": null,
 				"scss/dollar-variable-pattern": null,
 				"block-no-empty": null,
-				"order/order": null
+				"order/order": null,
+				"property-no-vendor-prefix": null
 			}
 		},
 		{

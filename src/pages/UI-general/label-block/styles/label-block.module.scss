@@ -59,7 +59,7 @@
 	height: 100%;
 	color: var(--primary-color);
 	letter-spacing: 0.25px;
-	background-color: var(--reverse-primary-color);
+	background-color: rgba($color: var(--primary-color), $alpha: 20%);
 	transition:
 		color var(--transition-change-color),
 		background-color var(--transition-change-color);
@@ -72,10 +72,10 @@
 
 .inputSize400 {
 	padding: 0 1rem;
-	font-size: 1.25rem;
+	font-size: 1.1rem;
 
 	&::placeholder {
-		font-size: 1.15rem;
+		font-size: 1rem;
 		opacity: 0.5;
 	}
 }

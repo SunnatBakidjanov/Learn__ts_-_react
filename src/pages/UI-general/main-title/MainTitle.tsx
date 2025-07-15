@@ -1,10 +1,6 @@
 import classNames from 'classnames';
 import styles from './styles/main-title.module.scss';
-
-type MainTitleProps = {
-	text?: string;
-	styleUsePlace?: string;
-};
+import type { MainTitleProps } from './types/types';
 
 export const MainTitle = ({ text, styleUsePlace }: MainTitleProps) => {
 	return (

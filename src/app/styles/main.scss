@@ -6,18 +6,26 @@ html.no-theme-transition * {
 	--transition-change-color: 0.2s ease-out;
 }
 
+body {
+	background-color: white;
+}
+
 :root[data-theme='light'] {
 	--primary-color: #000;
 	--reverse-primary-color: #fff;
-	--accent-color: #3493ff;
-	--reverse-accent-color: #ff9d00;
+	--same-primary-white-color: #fff;
+	--accent-color: #009cfd;
+	--accent-white-color: #009cfd;
+	--reverse-accent-color: #b14fc0;
 }
 
 :root[data-theme='dark'] {
 	--primary-color: #fff;
 	--reverse-primary-color: #000;
-	--accent-color: #ff9d00;
-	--reverse-accent-color: #3493ff;
+	--same-primary-white-color: #fff;
+	--accent-color: #b14fc0;
+	--accent-white-color: #fff;
+	--reverse-accent-color: #009cfd;
 }
 
 @font-face {

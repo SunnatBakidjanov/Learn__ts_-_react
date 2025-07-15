@@ -1,10 +1,19 @@
 .form {
 	display: flex;
 	flex-direction: column;
-	padding: 3rem 2.25rem;
 	row-gap: 2rem;
 	width: 100%;
-	border-radius: 10px;
-	box-shadow: 0 5px 20px var(--accent-color);
-	transition: box-shadow var(--transition-change-color);
+}
+
+.innerLabel {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
+}
+
+.validationMessageRoot {
+	padding-left: 0.5rem;
+	will-change: height;
+	transition: height 0.2s ease-out;
+	overflow: hidden;
 }

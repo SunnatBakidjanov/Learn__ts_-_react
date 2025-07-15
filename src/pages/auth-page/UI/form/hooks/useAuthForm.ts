@@ -1,5 +1,13 @@
-import { useReducer } from 'react';
-import type { AuthFormState, ReducerAction, AllowedFields, RegisterResponse } from '../types/types';
+import { useReducer, useEffect, useRef } from 'react';
+import type {
+	AuthFormState,
+	ReducerAction,
+	AllowedFields,
+	RegisterResponse,
+	ErrorMessages,
+	AuthFileds,
+} from '../types/types';
+import { validateAuthForm } from '../scripts/validateAuthForm';
 import { ACTIONS } from '../scripts/actionConstants';
 import axios from 'axios';
 
@@ -9,6 +17,7 @@ const initialState: AuthFormState = {
 	lastName: '',
 	password: '',
 	repeatPassword: '',
+	errorMessage: undefined,
 	isLoading: false,
 };
 
@@ -23,6 +32,12 @@ const reducer: React.Reducer<AuthFormState, ReducerAction> = (state, action) => 
 		case ACTIONS.CLEAR_FORM:
 			return { ...initialState };
 
+		case ACTIONS.SHOW_ERRORS:
+			return {
+				...state,
+				errorMessage: action.payload,
+			};
+
 		default:
 			return state;
 	}
@@ -36,6 +51,14 @@ export const useAuthform = () => {
 	};
 
 	const handleSubmit = async () => {
+		const error = validateAuthForm(state);
+
+		dispatch({ type: ACTIONS.SHOW_ERRORS, payload: error || 'SUCCESS' });
+
+		if (error !== undefined) {
+			return { sucess: false };
+		}
+
 		dispatch({ type: ACTIONS.SET_LOADER, payload: true });
 
 		try {
