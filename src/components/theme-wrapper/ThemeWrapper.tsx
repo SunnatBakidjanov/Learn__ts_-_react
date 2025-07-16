@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { setTheme } from '../../redux/theme-slice/themeSlice';
+import { setTheme } from '../../redux/theme-slice/slice';
 
 export const ThemeWrapper = ({ children }: { children: React.ReactNode }) => {
 	const theme = useAppSelector(state => state.theme.currentTheme);
 	const dispatch = useAppDispatch();
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		dispatch(setTheme());
 	}, []);
 

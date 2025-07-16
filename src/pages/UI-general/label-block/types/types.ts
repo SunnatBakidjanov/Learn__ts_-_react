@@ -10,6 +10,7 @@ type LabelBlockProps = {
 	onChange?: ChangeEventHandler<HTMLInputElement>;
 	value?: string;
 	isRequired?: boolean;
+	autocomplete?: React.InputHTMLAttributes<HTMLInputElement>['autoComplete'];
 };
 
 export type { LabelBlockProps };

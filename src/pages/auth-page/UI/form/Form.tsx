@@ -7,13 +7,14 @@ import { useAuthform } from './hooks/useAuthForm';
 import { Loader } from '../../../UI-general/loader/Loader';
 import { ValidatinoMessage } from '../../../UI-general/validation-message/ValidationMessage';
 import { useFieldErrorHeight } from './hooks/useFieldErrorHeight';
-import { PASSWORD_ERRORS, PASSWORD_REPEAT_ERRORS } from './scripts/errorsConstants';
+import { useErrorMessages } from './hooks/useErrorMessages';
 
 export const Form = () => {
 	const { t } = useTranslation();
 	const { setField, state, handleSubmit } = useAuthform();
 	const { name, lastName, password, email, repeatPassword, isLoading, errorMessage } = state;
 	const { getHeight, setErrorMessageRef } = useFieldErrorHeight(errorMessage || 'SUCCESS');
+	const { passwordErrors, passwordRepeatErrors } = useErrorMessages();
 
 	return (
 		<form
@@ -68,10 +69,11 @@ export const Form = () => {
 					inputName="password"
 					value={password}
 					onChange={e => setField('password', e.target.value)}
+					autocomplete="new-password"
 				/>
 
 				{(() => {
-					const text = PASSWORD_ERRORS[errorMessage as keyof typeof PASSWORD_ERRORS];
+					const text = passwordErrors[errorMessage as keyof typeof passwordErrors];
 
 					return (
 						<div
@@ -95,10 +97,12 @@ export const Form = () => {
 					inputName="repeatPassword"
 					value={repeatPassword}
 					onChange={e => setField('repeatPassword', e.target.value)}
+					autocomplete="new-password"
 				/>
 
 				{(() => {
-					const text = PASSWORD_REPEAT_ERRORS[errorMessage as keyof typeof PASSWORD_REPEAT_ERRORS];
+					const text = passwordRepeatErrors[errorMessage as keyof typeof passwordRepeatErrors];
+					console.log(passwordErrors);
 
 					return (
 						<div

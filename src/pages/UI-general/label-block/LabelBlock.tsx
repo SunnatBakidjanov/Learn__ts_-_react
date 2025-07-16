@@ -12,6 +12,7 @@ export const LabelBlock = ({
 	onChange,
 	value,
 	isRequired = true,
+	autocomplete = 'on',
 }: LabelBlockProps) => {
 	return (
 		<div
@@ -44,6 +45,7 @@ export const LabelBlock = ({
 					onChange={onChange}
 					value={value}
 					required={isRequired}
+					autoComplete={autocomplete}
 				/>
 
 				<span

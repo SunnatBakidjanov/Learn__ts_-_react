@@ -2,28 +2,40 @@
 	position: relative;
 	z-index: var(--main-content-index);
 	display: flex;
+	align-items: center;
 	justify-content: center;
-	width: 80px;
-	height: 30px;
-	background-color: var(--accent-color);
-	border-radius: 20px;
 	overflow: hidden;
 	transition: background-color var(--transition-change-color);
 }
 
-.imgMoon {
+.iconRoot {
 	position: absolute;
-	top: 3px;
-	right: 10%;
-	width: auto;
-	height: 80%;
-	object-fit: cover;
+	height: 100%;
+	transition: color var(--transition-change-color);
 }
 
-.imgSun {
-	position: absolute;
-	left: 7%;
-	width: auto;
-	height: 100%;
-	object-fit: cover;
+.iconSun {
+	left: -100%;
+	width: 55%;
+	color: var(--same-primary-white-color);
+	transition: left 0.4s ease;
+	transform: translateX(-50%);
+}
+
+.iconSunOpen {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.iconMoon {
+	right: -100%;
+	width: 50%;
+	color: var(--same-primary-white-color);
+	transition: right 0.4s ease;
+	transform: translateX(50%);
+}
+
+.iconMoonOpen {
+	right: 50%;
+	transform: translateX(50%);
 }

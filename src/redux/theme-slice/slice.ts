@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 type ThemeState = {
 	currentTheme: 'light' | 'dark';
-	lifetime: number;
 };
 
 const initialState: ThemeState = {
@@ -10,7 +9,6 @@ const initialState: ThemeState = {
 		(sessionStorage.getItem('theme') as 'light' | 'dark') ||
 		(localStorage.getItem('theme') as 'light' | 'dark') ||
 		'light',
-	lifetime: 3600000,
 };
 
 const themeSlice = createSlice({
@@ -25,10 +23,11 @@ const themeSlice = createSlice({
 			const now = Date.now();
 			const lastUpdateStr = localStorage.getItem('theme_last_update');
 			const lastUpdate = lastUpdateStr ? parseInt(lastUpdateStr) : 0;
+			const lifetime = 3600000;
 
-			const oneHourPassed = now - lastUpdate > state.lifetime;
+			const lifeTimePassed = now - lastUpdate > lifetime;
 
-			if (oneHourPassed) {
+			if (lifeTimePassed) {
 				const hours = new Date().getHours();
 				const nextTheme = hours >= 7 && hours < 19 ? 'light' : 'dark';
 
@@ -49,4 +48,4 @@ const themeSlice = createSlice({
 });
 
 export const { toggleTheme, setTheme } = themeSlice.actions;
-export default themeSlice.reducer;
+export default themeSlice;

@@ -5,10 +5,10 @@ import type { TypedUseSelectorHook } from 'react-redux';
 import type { PersistConfig } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import themeReducer from './theme-slice/themeSlice';
+import themeSlice from './theme-slice/slice';
 
 const rootReducer = combineReducers({
-	theme: themeReducer,
+	[themeSlice.name]: themeSlice.reducer,
 });
 
 const persistConfig: PersistConfig<ReturnType<typeof rootReducer>> = {

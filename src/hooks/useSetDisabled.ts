@@ -5,14 +5,14 @@ export const useSetDisabled = () => {
 	const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const toggleDisabled = (time: 400 | number = 400) => {
-		setDisabled(true);
+		setDisabled(prev => !prev);
 
 		if (timerRef.current) {
 			clearTimeout(timerRef.current);
 		}
 
 		timerRef.current = setTimeout(() => {
-			setDisabled(false);
+			setDisabled(prev => !prev);
 		}, time);
 	};
 

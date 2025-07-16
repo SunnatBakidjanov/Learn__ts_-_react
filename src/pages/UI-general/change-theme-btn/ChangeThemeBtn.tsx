@@ -1,27 +1,41 @@
-import sunImg from '../../../assets/imgs/webp/changeThemeSun.webp';
-import moonImg from '../../../assets/imgs/webp/changeThemeMoon.webp';
 import style from './styles/change-theme-btn.module.scss';
 import classNames from 'classnames';
 import { useSetDisabled } from '../../../hooks/useSetDisabled';
-import { useAppDispatch } from '../../../redux/store';
-import { toggleTheme } from '../../../redux/theme-slice/themeSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { toggleTheme } from '../../../redux/theme-slice/slice';
+import { FaSun, FaMoon } from 'react-icons/fa';
+import type { ChangeThemeBtnProps } from './types/types';
 
-export const ChangeThemeBtn = () => {
+export const ChangeThemeBtn = ({ className }: ChangeThemeBtnProps) => {
 	const dispatch = useAppDispatch();
 	const { isDisabled, toggleDisabled } = useSetDisabled();
+	const theme = useAppSelector(state => state.theme.currentTheme);
 
 	return (
 		<button
 			type="button"
-			className={classNames(style.button)}
+			className={classNames(className, style.button)}
 			onClick={() => {
-				toggleDisabled(250);
+				toggleDisabled();
 				dispatch(toggleTheme());
 			}}
 			disabled={isDisabled}
 		>
-			<img src={sunImg} alt="" className={classNames(style.imgSun)} />
-			<img src={moonImg} alt="" className={classNames(style.imgMoon)} />
+			<FaSun
+				className={classNames(
+					style.iconRoot,
+					style.iconSun,
+					theme === 'light' ? style.iconSunOpen : ''
+				)}
+			/>
+
+			<FaMoon
+				className={classNames(
+					style.iconRoot,
+					style.iconMoon,
+					theme === 'dark' ? style.iconMoonOpen : ''
+				)}
+			/>
 		</button>
 	);
 };
