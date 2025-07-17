@@ -7,6 +7,7 @@ export const ValidatinoMessage = ({ styleUsePlace, text }: ValidationMessageProp
 		<p
 			className={classNames({
 				[styles.authMessages]: styleUsePlace === 'auth',
+				[styles.authPrimaryMessages]: styleUsePlace === 'authPrimary',
 			})}
 		>
 			{text}

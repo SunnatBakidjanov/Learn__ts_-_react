@@ -1,5 +1,5 @@
 type ValidationMessageProps = {
-	styleUsePlace: 'auth' | 'login';
+	styleUsePlace: 'auth' | 'authPrimary' | 'login';
 	text: string;
 };
 

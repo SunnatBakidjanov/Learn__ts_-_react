@@ -3,9 +3,11 @@ import { useEffect, useRef, useState } from 'react';
 
 const errorToField = new Map<ErrorMessages, AuthFileds>([
 	['INVALID_NAME', 'NAME_FIELD'],
+	['LOW_NAME_LENGTH', 'NAME_FIELD'],
 	['INVALID_LASTNAME', 'LAST_NAME_FIELD'],
 	['LOW_PASSWORD_LENGTH', 'PASSWORD_FIELD'],
 	['PASSWORD_DO_NOT_MATCH', 'PASSWORD_REPEAT_FIELD'],
+	['UNKNOW_ERROR', 'UNKNOW_ERROR_FIELD'],
 ]);
 
 export const useFieldErrorHeight = (errorMessage: ErrorMessages) => {

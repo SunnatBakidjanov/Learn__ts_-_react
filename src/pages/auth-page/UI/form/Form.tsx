@@ -14,7 +14,13 @@ export const Form = () => {
 	const { setField, state, handleSubmit } = useAuthform();
 	const { name, lastName, password, email, repeatPassword, isLoading, errorMessage } = state;
 	const { getHeight, setErrorMessageRef } = useFieldErrorHeight(errorMessage || 'SUCCESS');
-	const { passwordErrors, passwordRepeatErrors } = useErrorMessages();
+	const {
+		passwordErrorMessage,
+		passwordRepeatErrorMessage,
+		nameErrorMessages,
+		lastNameErrorMessage,
+		unknownErrorMessage,
+	} = useErrorMessages(errorMessage || 'SUCCESS');
 
 	return (
 		<form
@@ -24,27 +30,49 @@ export const Form = () => {
 				handleSubmit();
 			}}
 		>
-			<LabelBlock
-				placeholder={t('form.placeholder.name')}
-				type="text"
-				isRenderText={true}
-				text={t('form.text.name')}
-				styleSize="400"
-				inputName="name"
-				value={name}
-				onChange={e => setField('name', e.target.value)}
-			/>
+			<div className={styles.innerLabel}>
+				<LabelBlock
+					placeholder={t('form.placeholder.name')}
+					type="text"
+					isRenderText={true}
+					text={t('form.text.name')}
+					styleSize="400"
+					inputName="name"
+					value={name}
+					onChange={e => setField('name', e.target.value)}
+				/>
 
-			<LabelBlock
-				placeholder={t('form.placeholder.lastName')}
-				type="text"
-				isRenderText={true}
-				text={t('form.text.lastName')}
-				styleSize="400"
-				inputName="lastName"
-				value={lastName}
-				onChange={e => setField('lastName', e.target.value)}
-			/>
+				<div
+					ref={setErrorMessageRef('NAME_FIELD')}
+					style={{ height: nameErrorMessages ? getHeight('NAME_FIELD') : 0 }}
+					className={styles.validationMessageRoot}
+				>
+					{nameErrorMessages && <ValidatinoMessage styleUsePlace="auth" text={nameErrorMessages} />}
+				</div>
+			</div>
+
+			<div className={styles.innerLabel}>
+				<LabelBlock
+					placeholder={t('form.placeholder.lastName')}
+					type="text"
+					isRenderText={true}
+					text={t('form.text.lastName')}
+					styleSize="400"
+					inputName="lastName"
+					value={lastName}
+					onChange={e => setField('lastName', e.target.value)}
+				/>
+
+				<div
+					ref={setErrorMessageRef('LAST_NAME_FIELD')}
+					style={{ height: lastNameErrorMessage ? getHeight('LAST_NAME_FIELD') : 0 }}
+					className={styles.validationMessageRoot}
+				>
+					{lastNameErrorMessage && (
+						<ValidatinoMessage styleUsePlace="auth" text={lastNameErrorMessage} />
+					)}
+				</div>
+			</div>
 
 			<div className={styles.innerLabel}>
 				<LabelBlock
@@ -72,19 +100,15 @@ export const Form = () => {
 					autocomplete="new-password"
 				/>
 
-				{(() => {
-					const text = passwordErrors[errorMessage as keyof typeof passwordErrors];
-
-					return (
-						<div
-							ref={setErrorMessageRef('PASSWORD_FIELD')}
-							style={{ height: text ? getHeight('PASSWORD_FIELD') : 0 }}
-							className={styles.validationMessageRoot}
-						>
-							{text && <ValidatinoMessage styleUsePlace="auth" text={text} />}
-						</div>
-					);
-				})()}
+				<div
+					ref={setErrorMessageRef('PASSWORD_FIELD')}
+					style={{ height: passwordErrorMessage ? getHeight('PASSWORD_FIELD') : 0 }}
+					className={styles.validationMessageRoot}
+				>
+					{passwordErrorMessage && (
+						<ValidatinoMessage styleUsePlace="auth" text={passwordErrorMessage} />
+					)}
+				</div>
 			</div>
 
 			<div className={styles.innerLabel}>
@@ -100,31 +124,38 @@ export const Form = () => {
 					autocomplete="new-password"
 				/>
 
-				{(() => {
-					const text = passwordRepeatErrors[errorMessage as keyof typeof passwordRepeatErrors];
-					console.log(passwordErrors);
-
-					return (
-						<div
-							ref={setErrorMessageRef('PASSWORD_REPEAT_FIELD')}
-							style={{ height: text ? getHeight('PASSWORD_REPEAT_FIELD') : 0 }}
-							className={styles.validationMessageRoot}
-						>
-							{text && <ValidatinoMessage styleUsePlace="auth" text={text} />}
-						</div>
-					);
-				})()}
+				<div
+					ref={setErrorMessageRef('PASSWORD_REPEAT_FIELD')}
+					style={{ height: passwordRepeatErrorMessage ? getHeight('PASSWORD_REPEAT_FIELD') : 0 }}
+					className={styles.validationMessageRoot}
+				>
+					{passwordRepeatErrorMessage && (
+						<ValidatinoMessage styleUsePlace="auth" text={passwordRepeatErrorMessage} />
+					)}
+				</div>
 			</div>
 
-			<SubmitBtn
-				ariaLabel={t('form.submitBtn')}
-				text={!isLoading ? t('form.submitBtn') : undefined}
-				styleUsePlace="auth"
-				type="submit"
-				isDisabled={isLoading}
-			>
-				{isLoading ? <Loader loaderType="shadowRolling" /> : undefined}
-			</SubmitBtn>
+			<div className={styles.innerBtn}>
+				<div
+					ref={setErrorMessageRef('UNKNOW_ERROR_FIELD')}
+					style={{ height: unknownErrorMessage ? getHeight('UNKNOW_ERROR_FIELD') : 0 }}
+					className={classNames(styles.validationMessageRoot, styles.validationMessagePrimary)}
+				>
+					{unknownErrorMessage && (
+						<ValidatinoMessage styleUsePlace="authPrimary" text={unknownErrorMessage} />
+					)}
+				</div>
+
+				<SubmitBtn
+					ariaLabel={t('form.submitBtn')}
+					text={!isLoading ? t('form.submitBtn') : undefined}
+					styleUsePlace="auth"
+					type="submit"
+					isDisabled={isLoading}
+				>
+					{isLoading ? <Loader loaderType="shadowRolling" /> : undefined}
+				</SubmitBtn>
+			</div>
 		</form>
 	);
 };

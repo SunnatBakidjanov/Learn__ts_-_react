@@ -3,6 +3,7 @@ import type { AuthFormState, ReducerAction, AllowedFields, RegisterResponse } fr
 import { validateAuthForm } from '../scripts/validateAuthForm';
 import { ACTIONS } from '../scripts/actionConstants';
 import axios from 'axios';
+import { ERRORS } from '../scripts/errorConstants';
 
 const initialState: AuthFormState = {
 	name: '',
@@ -49,7 +50,7 @@ export const useAuthform = () => {
 
 		dispatch({ type: ACTIONS.SHOW_ERRORS, payload: error || 'SUCCESS' });
 
-		if (error !== undefined) {
+		if (error !== 'SUCCESS') {
 			return { sucess: false };
 		}
 
@@ -67,9 +68,14 @@ export const useAuthform = () => {
 			);
 
 			dispatch({ type: ACTIONS.CLEAR_FORM });
+			dispatch({ type: ACTIONS.SHOW_ERRORS, payload: 'SUCCESS' });
 		} catch (error) {
 			const err = error as Error;
-			console.error(err.message);
+			console.error(err);
+
+			if (Object.values(ERRORS).every(error => error !== err.message)) {
+				dispatch({ type: ACTIONS.SHOW_ERRORS, payload: 'UNKNOW_ERROR' });
+			}
 		} finally {
 			dispatch({ type: ACTIONS.SET_LOADER, payload: false });
 		}
@@ -78,7 +84,6 @@ export const useAuthform = () => {
 	return {
 		handleSubmit,
 		setField,
-		dispatch,
 		state,
 	};
 };

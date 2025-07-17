@@ -1,0 +1,11 @@
+import type { ErrorMessages } from '../types/types';
+
+export const ERRORS: Record<ErrorMessages, ErrorMessages> = {
+	INVALID_NAME: 'INVALID_NAME',
+	INVALID_LASTNAME: 'INVALID_LASTNAME',
+	LOW_PASSWORD_LENGTH: 'LOW_PASSWORD_LENGTH',
+	LOW_NAME_LENGTH: 'LOW_NAME_LENGTH',
+	PASSWORD_DO_NOT_MATCH: 'PASSWORD_DO_NOT_MATCH',
+	UNKNOW_ERROR: 'UNKNOW_ERROR',
+	SUCCESS: 'SUCCESS',
+} as const;

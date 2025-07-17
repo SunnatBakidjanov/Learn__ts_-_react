@@ -24,6 +24,9 @@ declare module 'i18next' {
 					errorsMessages: {
 						passwrodDoNotMatch: string;
 						lowPasswordLength: string;
+						invalidName: string;
+						lowNameLength: string;
+						invalidLastName: string;
 					};
 					submitBtn: string;
 				};

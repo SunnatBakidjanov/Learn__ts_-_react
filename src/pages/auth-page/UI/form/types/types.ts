@@ -5,6 +5,8 @@ type ErrorMessages =
 	| 'INVALID_LASTNAME'
 	| 'PASSWORD_DO_NOT_MATCH'
 	| 'LOW_PASSWORD_LENGTH'
+	| 'LOW_NAME_LENGTH'
+	| 'UNKNOW_ERROR'
 	| 'SUCCESS';
 
 type AuthFileds =
@@ -12,6 +14,7 @@ type AuthFileds =
 	| 'PASSWORD_FIELD'
 	| 'PASSWORD_REPEAT_FIELD'
 	| 'LAST_NAME_FIELD'
+	| 'UNKNOW_ERROR_FIELD'
 	| 'EMAIL_FIELD';
 
 type AllowedFields = 'name' | 'lastName' | 'email' | 'password' | 'repeatPassword';
