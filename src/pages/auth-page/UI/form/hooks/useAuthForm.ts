@@ -1,9 +1,14 @@
 import { useReducer } from 'react';
-import type { AuthFormState, ReducerAction, AllowedFields, RegisterResponse } from '../types/types';
+import type {
+	AuthFormState,
+	ReducerAction,
+	AllowedFields,
+	RegisterResponse,
+	ErrorMessages,
+} from '../types/types';
 import { validateAuthForm } from '../scripts/validateAuthForm';
-import { ACTIONS } from '../scripts/actionConstants';
+import type { AxiosError } from 'axios';
 import axios from 'axios';
-import { ERRORS } from '../scripts/errorConstants';
 
 const initialState: AuthFormState = {
 	name: '',
@@ -17,16 +22,16 @@ const initialState: AuthFormState = {
 
 const reducer: React.Reducer<AuthFormState, ReducerAction> = (state, action) => {
 	switch (action.type) {
-		case ACTIONS.SET_FIELD:
+		case 'SET_FIELD':
 			return { ...state, [action.field]: action.payload };
 
-		case ACTIONS.SET_LOADER:
+		case 'SET_LOADER':
 			return { ...state, isLoading: action.payload };
 
-		case ACTIONS.CLEAR_FORM:
+		case 'CLEAR_FORM':
 			return { ...initialState };
 
-		case ACTIONS.SHOW_ERRORS:
+		case 'SHOW_ERRORS':
 			return {
 				...state,
 				errorMessage: action.payload,
@@ -41,20 +46,20 @@ export const useAuthform = () => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	const setField = (field: AllowedFields, payload: string) => {
-		dispatch({ type: ACTIONS.SET_FIELD, field, payload });
-		dispatch({ type: ACTIONS.SHOW_ERRORS, payload: 'SUCCESS' });
+		dispatch({ type: 'SET_FIELD', field, payload });
+		dispatch({ type: 'SHOW_ERRORS', payload: undefined });
 	};
 
 	const handleSubmit = async () => {
 		const error = validateAuthForm(state);
 
-		dispatch({ type: ACTIONS.SHOW_ERRORS, payload: error || 'SUCCESS' });
+		dispatch({ type: 'SHOW_ERRORS', payload: error });
 
-		if (error !== 'SUCCESS') {
+		if (error !== undefined) {
 			return { sucess: false };
 		}
 
-		dispatch({ type: ACTIONS.SET_LOADER, payload: true });
+		dispatch({ type: 'SET_LOADER', payload: true });
 
 		try {
 			const { data } = await axios.post<RegisterResponse>(
@@ -67,17 +72,25 @@ export const useAuthform = () => {
 				}
 			);
 
-			dispatch({ type: ACTIONS.CLEAR_FORM });
-			dispatch({ type: ACTIONS.SHOW_ERRORS, payload: 'SUCCESS' });
+			dispatch({ type: 'CLEAR_FORM' });
+			dispatch({ type: 'SHOW_ERRORS', payload: data.message });
 		} catch (error) {
-			const err = error as Error;
-			console.error(err);
+			const err = error as AxiosError<{ message: ErrorMessages }>;
 
-			if (Object.values(ERRORS).every(error => error !== err.message)) {
-				dispatch({ type: ACTIONS.SHOW_ERRORS, payload: 'UNKNOW_ERROR' });
+			if (err.response?.data?.message) {
+				const SERVER_MESSAGES: ErrorMessages[] = ['EMAIL_EXISTS'];
+				const serverMessage = err.response.data.message;
+
+				if (SERVER_MESSAGES.includes(serverMessage)) {
+					dispatch({ type: 'SHOW_ERRORS', payload: serverMessage });
+				} else {
+					dispatch({ type: 'SHOW_ERRORS', payload: 'UNKNOW_ERROR' });
+				}
+			} else {
+				dispatch({ type: 'SHOW_ERRORS', payload: 'UNKNOW_ERROR' });
 			}
 		} finally {
-			dispatch({ type: ACTIONS.SET_LOADER, payload: false });
+			dispatch({ type: 'SET_LOADER', payload: false });
 		}
 	};
 

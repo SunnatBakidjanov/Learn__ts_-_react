@@ -5,22 +5,12 @@ import styles from '../form/styles/form.module.scss';
 import classNames from 'classnames';
 import { useAuthform } from './hooks/useAuthForm';
 import { Loader } from '../../../UI-general/loader/Loader';
-import { ValidatinoMessage } from '../../../UI-general/validation-message/ValidationMessage';
-import { useFieldErrorHeight } from './hooks/useFieldErrorHeight';
-import { useErrorMessages } from './hooks/useErrorMessages';
+import { ErrorField } from '../error-field/ErrorField';
 
 export const Form = () => {
 	const { t } = useTranslation();
-	const { setField, state, handleSubmit } = useAuthform();
+	const { state, setField, handleSubmit } = useAuthform();
 	const { name, lastName, password, email, repeatPassword, isLoading, errorMessage } = state;
-	const { getHeight, setErrorMessageRef } = useFieldErrorHeight(errorMessage || 'SUCCESS');
-	const {
-		passwordErrorMessage,
-		passwordRepeatErrorMessage,
-		nameErrorMessages,
-		lastNameErrorMessage,
-		unknownErrorMessage,
-	} = useErrorMessages(errorMessage || 'SUCCESS');
 
 	return (
 		<form
@@ -42,13 +32,12 @@ export const Form = () => {
 					onChange={e => setField('name', e.target.value)}
 				/>
 
-				<div
-					ref={setErrorMessageRef('NAME_FIELD')}
-					style={{ height: nameErrorMessages ? getHeight('NAME_FIELD') : 0 }}
+				<ErrorField
+					errorMessage={errorMessage}
 					className={styles.validationMessageRoot}
-				>
-					{nameErrorMessages && <ValidatinoMessage styleUsePlace="auth" text={nameErrorMessages} />}
-				</div>
+					fieldName="NAME_FIELD"
+					styleUsePlace="auth"
+				/>
 			</div>
 
 			<div className={styles.innerLabel}>
@@ -63,15 +52,12 @@ export const Form = () => {
 					onChange={e => setField('lastName', e.target.value)}
 				/>
 
-				<div
-					ref={setErrorMessageRef('LAST_NAME_FIELD')}
-					style={{ height: lastNameErrorMessage ? getHeight('LAST_NAME_FIELD') : 0 }}
+				<ErrorField
+					errorMessage={errorMessage}
 					className={styles.validationMessageRoot}
-				>
-					{lastNameErrorMessage && (
-						<ValidatinoMessage styleUsePlace="auth" text={lastNameErrorMessage} />
-					)}
-				</div>
+					fieldName="LAST_NAME_FIELD"
+					styleUsePlace="auth"
+				/>
 			</div>
 
 			<div className={styles.innerLabel}>
@@ -84,6 +70,13 @@ export const Form = () => {
 					inputName="email"
 					value={email}
 					onChange={e => setField('email', e.target.value)}
+				/>
+
+				<ErrorField
+					errorMessage={errorMessage}
+					className={styles.validationMessageRoot}
+					fieldName="EMAIL_FIELD"
+					styleUsePlace="auth"
 				/>
 			</div>
 
@@ -100,15 +93,12 @@ export const Form = () => {
 					autocomplete="new-password"
 				/>
 
-				<div
-					ref={setErrorMessageRef('PASSWORD_FIELD')}
-					style={{ height: passwordErrorMessage ? getHeight('PASSWORD_FIELD') : 0 }}
+				<ErrorField
+					errorMessage={errorMessage}
 					className={styles.validationMessageRoot}
-				>
-					{passwordErrorMessage && (
-						<ValidatinoMessage styleUsePlace="auth" text={passwordErrorMessage} />
-					)}
-				</div>
+					fieldName="PASSWORD_FIELD"
+					styleUsePlace="auth"
+				/>
 			</div>
 
 			<div className={styles.innerLabel}>
@@ -124,27 +114,21 @@ export const Form = () => {
 					autocomplete="new-password"
 				/>
 
-				<div
-					ref={setErrorMessageRef('PASSWORD_REPEAT_FIELD')}
-					style={{ height: passwordRepeatErrorMessage ? getHeight('PASSWORD_REPEAT_FIELD') : 0 }}
+				<ErrorField
+					errorMessage={errorMessage}
 					className={styles.validationMessageRoot}
-				>
-					{passwordRepeatErrorMessage && (
-						<ValidatinoMessage styleUsePlace="auth" text={passwordRepeatErrorMessage} />
-					)}
-				</div>
+					fieldName="PASSWORD_REPEAT_FIELD"
+					styleUsePlace="auth"
+				/>
 			</div>
 
 			<div className={styles.innerBtn}>
-				<div
-					ref={setErrorMessageRef('UNKNOW_ERROR_FIELD')}
-					style={{ height: unknownErrorMessage ? getHeight('UNKNOW_ERROR_FIELD') : 0 }}
-					className={classNames(styles.validationMessageRoot, styles.validationMessagePrimary)}
-				>
-					{unknownErrorMessage && (
-						<ValidatinoMessage styleUsePlace="authPrimary" text={unknownErrorMessage} />
-					)}
-				</div>
+				<ErrorField
+					errorMessage={errorMessage}
+					className={styles.validationMessageRoot}
+					fieldName="UNKNOWN_ERROR_FIELD"
+					styleUsePlace="authPrimary"
+				/>
 
 				<SubmitBtn
 					ariaLabel={t('form.submitBtn')}

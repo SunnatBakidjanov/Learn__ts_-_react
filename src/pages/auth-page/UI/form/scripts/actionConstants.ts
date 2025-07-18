@@ -1,6 +1,0 @@
-export const ACTIONS = {
-	SET_FIELD: 'SET_FIELD',
-	CLEAR_FORM: 'CLEAR_FORM',
-	SET_LOADER: 'SET_LOADER',
-	SHOW_ERRORS: 'SHOW_ERRORS',
-} as const;

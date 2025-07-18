@@ -27,6 +27,9 @@ declare module 'i18next' {
 						invalidName: string;
 						lowNameLength: string;
 						invalidLastName: string;
+						emailExist: string;
+						unknownError: string;
+						success: string;
 					};
 					submitBtn: string;
 				};

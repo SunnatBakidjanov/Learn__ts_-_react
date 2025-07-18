@@ -1,5 +1,3 @@
-import { ACTIONS } from '../scripts/actionConstants';
-
 type ErrorMessages =
 	| 'INVALID_NAME'
 	| 'INVALID_LASTNAME'
@@ -7,14 +5,14 @@ type ErrorMessages =
 	| 'LOW_PASSWORD_LENGTH'
 	| 'LOW_NAME_LENGTH'
 	| 'UNKNOW_ERROR'
-	| 'SUCCESS';
+	| 'EMAIL_EXISTS';
 
 type AuthFileds =
 	| 'NAME_FIELD'
 	| 'PASSWORD_FIELD'
 	| 'PASSWORD_REPEAT_FIELD'
 	| 'LAST_NAME_FIELD'
-	| 'UNKNOW_ERROR_FIELD'
+	| 'UNKNOWN_ERROR_FIELD'
 	| 'EMAIL_FIELD';
 
 type AllowedFields = 'name' | 'lastName' | 'email' | 'password' | 'repeatPassword';
@@ -29,21 +27,21 @@ type AuthFormState = {
 	isLoading: boolean;
 };
 
-interface RegisterResponse {
+type RegisterResponse = {
 	success: boolean;
-	message: string;
+	message: ErrorMessages;
 	user: {
 		email: string;
 		name: string;
 		lastName: string;
 	};
-}
+};
 
 type ReducerAction =
-	| { type: typeof ACTIONS.SET_FIELD; field: AllowedFields; payload: string }
-	| { type: typeof ACTIONS.CLEAR_FORM }
-	| { type: typeof ACTIONS.SET_LOADER; payload: boolean }
-	| { type: typeof ACTIONS.SHOW_ERRORS; payload: ErrorMessages };
+	| { type: 'SET_FIELD'; field: AllowedFields; payload: string }
+	| { type: 'CLEAR_FORM' }
+	| { type: 'SET_LOADER'; payload: boolean }
+	| { type: 'SHOW_ERRORS'; payload: ErrorMessages | undefined };
 
 export type {
 	ReducerAction,

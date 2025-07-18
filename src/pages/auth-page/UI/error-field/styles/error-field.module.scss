@@ -1,0 +1,15 @@
+@use '../../../../../app/styles/mixins/font-mixins.scss';
+
+.authMessages {
+	@include font-mixins.furore-regular;
+
+	font-size: 1rem;
+	color: var(--accent-color);
+}
+
+.authPrimaryMessages {
+	@include font-mixins.furore-regular;
+
+	font-size: 1.15rem;
+	color: var(--accent-color);
+}

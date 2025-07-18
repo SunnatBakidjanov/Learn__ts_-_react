@@ -1,26 +1,27 @@
-import type { AuthFormState } from '../types/types';
-import { ERRORS } from './errorConstants';
+import type { AuthFormState, ErrorMessages } from '../types/types';
 
-export const validateAuthForm = (state: AuthFormState) => {
+export const validateAuthForm = (state: AuthFormState): ErrorMessages | undefined => {
 	const regExpLatinCyrilic = /^[a-zA-Zа-яА-ЯёЁ\s]+$/;
 
 	if (!regExpLatinCyrilic.test(state.name)) {
-		return ERRORS.INVALID_NAME;
+		return 'INVALID_NAME';
 	}
 
 	if (state.name.length < 2) {
-		return ERRORS.LOW_NAME_LENGTH;
+		return 'LOW_NAME_LENGTH';
 	}
 
 	if (!regExpLatinCyrilic.test(state.lastName)) {
-		return ERRORS.INVALID_LASTNAME;
+		return 'INVALID_LASTNAME';
 	}
 
 	if (state.password.length < 6) {
-		return ERRORS.LOW_PASSWORD_LENGTH;
+		return 'LOW_PASSWORD_LENGTH';
 	}
 
 	if (state.password !== state.repeatPassword) {
-		return ERRORS.PASSWORD_DO_NOT_MATCH;
+		return 'PASSWORD_DO_NOT_MATCH';
 	}
+
+	return undefined;
 };

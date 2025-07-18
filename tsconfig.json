@@ -22,5 +22,5 @@
 		/* Linting / Безопасность */
 		"strict": true
 	},
-	"include": ["src"]
+	"include": ["src", "src/pages/auth-page/UI/form/hooks/.ts"]
 }
