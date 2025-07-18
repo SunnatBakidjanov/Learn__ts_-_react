@@ -1,6 +1,7 @@
 import type { LabelBlockProps } from './types/types';
 import styles from './styles/label-block.module.scss';
 import classNames from 'classnames';
+import { ShowPasswordBtn } from '../show-password-btn/ShowPasswordBtn';
 
 export const LabelBlock = ({
 	placeholder,
@@ -11,6 +12,8 @@ export const LabelBlock = ({
 	inputName,
 	onChange,
 	value,
+	isShowPasswordEye,
+	onClick,
 	isRequired = true,
 	autocomplete = 'on',
 }: LabelBlockProps) => {
@@ -47,6 +50,8 @@ export const LabelBlock = ({
 					required={isRequired}
 					autoComplete={autocomplete}
 				/>
+
+				{isShowPasswordEye && onClick && <ShowPasswordBtn ariaLabel={text} onClick={onClick} />}
 
 				<span
 					className={classNames(styles.underlineRoot, {

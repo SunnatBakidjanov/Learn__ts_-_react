@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { useAuthform } from './hooks/useAuthForm';
 import { Loader } from '../../../UI-general/loader/Loader';
 import { ErrorField } from '../error-field/ErrorField';
+import { LabelPassword } from '../input-password/LabelPassword';
 
 export const Form = () => {
 	const { t } = useTranslation();
@@ -81,16 +82,12 @@ export const Form = () => {
 			</div>
 
 			<div className={styles.innerLabel}>
-				<LabelBlock
+				<LabelPassword
 					placeholder={t('form.placeholder.password')}
-					type="password"
-					isRenderText={true}
 					text={t('form.text.password')}
-					styleSize="400"
 					inputName="password"
-					value={password}
+					styleSize="400"
 					onChange={e => setField('password', e.target.value)}
-					autocomplete="new-password"
 				/>
 
 				<ErrorField
@@ -102,16 +99,12 @@ export const Form = () => {
 			</div>
 
 			<div className={styles.innerLabel}>
-				<LabelBlock
+				<LabelPassword
 					placeholder={t('form.placeholder.repeatPassword')}
-					type="password"
-					isRenderText={true}
 					text={t('form.text.repeatPassword')}
-					styleSize="400"
 					inputName="repeatPassword"
-					value={repeatPassword}
+					styleSize="400"
 					onChange={e => setField('repeatPassword', e.target.value)}
-					autocomplete="new-password"
 				/>
 
 				<ErrorField
