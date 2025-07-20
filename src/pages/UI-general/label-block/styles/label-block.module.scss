@@ -31,6 +31,7 @@
 	justify-content: center;
 	width: 100%;
 	border-bottom: 1px solid var(--primary-color);
+	cursor: text;
 	transition: border-bottom var(--transition-change-color);
 
 	&:focus-within .underlineRoot {

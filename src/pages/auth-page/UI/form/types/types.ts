@@ -22,7 +22,7 @@ type AuthFormState = {
 	email: string;
 	lastName: string;
 	password: string;
-	repeatPassword?: string;
+	repeatPassword: string;
 	errorMessage?: ErrorMessages;
 	isLoading: boolean;
 };

@@ -5,6 +5,7 @@ import { ShowPasswordBtn } from '../show-password-btn/ShowPasswordBtn';
 
 export const LabelBlock = ({
 	placeholder,
+	children,
 	type,
 	styleSize,
 	text = '',
@@ -12,8 +13,6 @@ export const LabelBlock = ({
 	inputName,
 	onChange,
 	value,
-	isShowPasswordEye,
-	onClick,
 	isRequired = true,
 	autocomplete = 'on',
 }: LabelBlockProps) => {
@@ -51,7 +50,7 @@ export const LabelBlock = ({
 					autoComplete={autocomplete}
 				/>
 
-				{isShowPasswordEye && onClick && <ShowPasswordBtn ariaLabel={text} onClick={onClick} />}
+				{children}
 
 				<span
 					className={classNames(styles.underlineRoot, {

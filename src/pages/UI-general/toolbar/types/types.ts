@@ -7,6 +7,7 @@ type Tool = {
 
 type ToolbarProps = {
 	styleUsePlace: 'auth';
+	InitialDegree: number;
 };
 
 export type { Tool, ToolbarProps };

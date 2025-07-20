@@ -3,10 +3,13 @@ import { LabelBlock } from '../../../UI-general/label-block/LabelBlock';
 import { SubmitBtn } from '../../../UI-general/submit-btn/SubmitBtn';
 import styles from '../form/styles/form.module.scss';
 import classNames from 'classnames';
+import { FaUserFriends } from 'react-icons/fa';
+import { IoMdMail } from 'react-icons/io';
+import { FaUser } from 'react-icons/fa6';
 import { useAuthform } from './hooks/useAuthForm';
 import { Loader } from '../../../UI-general/loader/Loader';
 import { ErrorField } from '../error-field/ErrorField';
-import { LabelPassword } from '../input-password/LabelPassword';
+import { LabelPassword } from '../label-password/LabelPassword';
 
 export const Form = () => {
 	const { t } = useTranslation();
@@ -31,7 +34,9 @@ export const Form = () => {
 					inputName="name"
 					value={name}
 					onChange={e => setField('name', e.target.value)}
-				/>
+				>
+					<FaUser className={classNames(styles.img)} />
+				</LabelBlock>
 
 				<ErrorField
 					errorMessage={errorMessage}
@@ -51,7 +56,9 @@ export const Form = () => {
 					inputName="lastName"
 					value={lastName}
 					onChange={e => setField('lastName', e.target.value)}
-				/>
+				>
+					<FaUserFriends className={classNames(styles.img)} />
+				</LabelBlock>
 
 				<ErrorField
 					errorMessage={errorMessage}
@@ -71,7 +78,9 @@ export const Form = () => {
 					inputName="email"
 					value={email}
 					onChange={e => setField('email', e.target.value)}
-				/>
+				>
+					<IoMdMail className={classNames(styles.img)} />
+				</LabelBlock>
 
 				<ErrorField
 					errorMessage={errorMessage}
@@ -87,6 +96,7 @@ export const Form = () => {
 					text={t('form.text.password')}
 					inputName="password"
 					styleSize="400"
+					value={password}
 					onChange={e => setField('password', e.target.value)}
 				/>
 
@@ -104,6 +114,7 @@ export const Form = () => {
 					text={t('form.text.repeatPassword')}
 					inputName="repeatPassword"
 					styleSize="400"
+					value={repeatPassword}
 					onChange={e => setField('repeatPassword', e.target.value)}
 				/>
 

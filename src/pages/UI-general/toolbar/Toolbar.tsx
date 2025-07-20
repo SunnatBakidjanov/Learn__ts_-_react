@@ -14,7 +14,7 @@ const tools: Tool[] = [
 	{ id: 'cog', element: <FaCog className={styles.tool} /> },
 ];
 
-export const Toolbar = ({ styleUsePlace }: ToolbarProps) => {
+export const Toolbar = ({ styleUsePlace, InitialDegree }: ToolbarProps) => {
 	const { isDisabled, toggleDisabled } = useSetDisabled();
 	const { wrapperRef, open, toggleToolbar } = useToolbar();
 
@@ -29,7 +29,7 @@ export const Toolbar = ({ styleUsePlace }: ToolbarProps) => {
 			ref={wrapperRef}
 		>
 			{tools.map((tool, idx) => {
-				const angle = -90 + idx * angleStep;
+				const angle = InitialDegree + idx * angleStep;
 				return (
 					<div
 						className={classNames(styles.trigger, open && styles.triggerOpen)}

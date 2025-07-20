@@ -1,14 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+type Theme = 'light' | 'dark';
+
 type ThemeState = {
-	currentTheme: 'light' | 'dark';
+	currentTheme: Theme;
 };
 
 const initialState: ThemeState = {
-	currentTheme:
-		(sessionStorage.getItem('theme') as 'light' | 'dark') ||
-		(localStorage.getItem('theme') as 'light' | 'dark') ||
-		'light',
+	currentTheme: (localStorage.getItem('theme') as Theme) || 'light',
 };
 
 const themeSlice = createSlice({

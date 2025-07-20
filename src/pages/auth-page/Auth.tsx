@@ -2,7 +2,6 @@ import { Form } from './UI/form/Form';
 import { SecondTitle } from './UI/second-title/SecondTitle';
 import { Title } from './UI/title/Title';
 import { BackgroundAccent } from '../UI-general/background-accent/BackgroundAccent';
-
 import styles from './styles/auth-root.module.scss';
 import classNames from 'classnames';
 import { Toolbar } from '../UI-general/toolbar/Toolbar';
@@ -28,7 +27,7 @@ export const Auth = () => {
 				</section>
 			</main>
 
-			<Toolbar styleUsePlace="auth" />
+			<Toolbar styleUsePlace="auth" InitialDegree={-90} />
 			<BackgroundAccent styleUsePlace="auth" />
 		</div>
 	);
