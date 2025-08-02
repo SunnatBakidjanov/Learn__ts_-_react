@@ -1,0 +1,13 @@
+.underline {
+	width: 0;
+}
+
+.link {
+	transition:
+		opacity 0.2s ease-out,
+		color var(--transition-change-color);
+
+	&:hover .underline {
+		width: 100%;
+	}
+}

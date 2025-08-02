@@ -1,0 +1,11 @@
+.transition-color {
+	transition: color var(--transition-change-color);
+}
+
+.transition-bg-color {
+	transition: background-color var(--transition-change-color);
+}
+
+.transition-opacity-c {
+	transition: opacity var(--transition-change-color);
+}

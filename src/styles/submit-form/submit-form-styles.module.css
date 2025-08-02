@@ -1,0 +1,29 @@
+.form {
+	transition:
+		background-color var(--transition-change-color),
+		box-shadow var(--transition-change-color);
+}
+
+.inputUnderline {
+	pointer-events: none;
+	bottom: 0;
+	display: block;
+	width: 0;
+	height: 2px;
+	will-change: width;
+	transition: width 0.3s ease-out;
+	background-color: var(--accent-color);
+}
+
+.input {
+	&:focus + .inputUnderline {
+		width: calc(100% - 0.5rem);
+	}
+}
+
+.submitBtn {
+	transition:
+		background-color var(--transition-change-color),
+		color var(--transition-change-color),
+		letter-spacing var(--transition-change-color) !important;
+}

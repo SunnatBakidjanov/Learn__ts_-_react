@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
 const persistConfig: PersistConfig<ReturnType<typeof rootReducer>> = {
 	key: 'root',
 	storage,
-	whitelist: ['auth'],
+	whitelist: [],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

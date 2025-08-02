@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+:root {
+	/* transition */
+	--transition-change-color: 0.4s ease-out;
+
+	/* index */
+	--main-bg-color-index: 1;
+	--gradient-bg-color-index: 2;
+	--main-content-index: 5;
+}
+
+:root[data-theme='light'] {
+	--primary-color: #000;
+	--primary-color-reverse: #fdfdfd;
+	--primary-transparent: rgb(255, 255, 255, 0.5);
+	--accent-color: #009cfd;
+	--accent-secondary-color: #005d97;
+	--same-white: #fdfdfd;
+	--same-dark: #1a1a1a;
+}
+
+:root[data-theme='dark'] {
+	--primary-color: #fdfdfd;
+	--primary-color-reverse: #1a1a1a;
+	--primary-transparent: rgb(0, 0, 0, 0.5);
+	--accent-color: #b14fc0;
+	--accent-secondary-color: #700081;
+	--same-white: #fdfdfd;
+	--same-dark: #1a1a1a;
+}
+
+@font-face {
+	font-family: Tinos;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../../assets/fonts/tinos/Tinos-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Tinos;
+	font-style: normal;
+	font-weight: 700;
+	src: url('../../assets/fonts/tinos/Tinos-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Tinos;
+	font-style: italic;
+	font-weight: 400;
+	src: url('../../assets/fonts/tinos/Tinos-Italic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Tinos;
+	font-style: italic;
+	font-weight: 700;
+	src: url('../../assets/fonts/tinos/Tinos-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Furore;
+	src: url('../../assets/fonts/Furore/Furore.otf');
+}

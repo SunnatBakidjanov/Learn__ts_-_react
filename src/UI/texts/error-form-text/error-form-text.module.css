@@ -1,0 +1,7 @@
+.root {
+	will-change: height;
+	transition:
+		color var(--transition-change-color),
+		height 0.3s linear,
+		margin-top 0.3s linear;
+}

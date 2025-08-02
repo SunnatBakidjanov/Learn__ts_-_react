@@ -5,21 +5,20 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import authEn from './locales/en/auth.json';
 import authRu from './locales/ru/auth.json';
 
-i18n
-	.use(LanguageDetector)
+i18n.use(LanguageDetector)
 	.use(initReactI18next)
 	.init({
-		ns: ['auth'],
+		ns: ['auth', 'login'],
 		resources: {
-			en: { auth: authEn },
-			ru: { auth: authRu },
+			en: { auth: authEn, login: {} },
+			ru: { auth: authRu, login: {} },
 		},
 		fallbackLng: 'ru',
 		interpolation: {
 			escapeValue: false,
 		},
 		detection: {
-			order: ['localStorage', 'navigator'],
+			order: ['localStorage'],
 			caches: ['localStorage'],
 		},
 	});

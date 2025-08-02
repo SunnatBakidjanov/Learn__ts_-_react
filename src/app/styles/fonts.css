@@ -1,0 +1,47 @@
+.tinos-regular {
+	font-family: Tinos, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+.tinos-bold {
+	font-family: Tinos, sans-serif;
+	font-style: normal;
+	font-weight: 700;
+}
+
+.tinos-italic {
+	font-family: Tinos, sans-serif;
+	font-style: italic;
+	font-weight: 400;
+}
+
+.tinos-bold-italic {
+	font-family: Tinos, sans-serif;
+	font-style: italic;
+	font-weight: 700;
+}
+
+.furore-regular {
+	font-family: Furore, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+.furore-italic {
+	font-family: Furore, sans-serif;
+	font-style: italic;
+	font-weight: 400;
+}
+
+.furore-bold {
+	font-family: Furore, sans-serif;
+	font-style: normal;
+	font-weight: 700;
+}
+
+.furore-bold-italic {
+	font-family: Furore, sans-serif;
+	font-style: italic;
+	font-weight: 700;
+}

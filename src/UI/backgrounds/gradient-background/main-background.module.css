@@ -1,0 +1,7 @@
+.lightTheme {
+	background: radial-gradient(circle at center center, #009cfd 30%, #fdfdfd 100%);
+}
+
+.darkTheme {
+	background: radial-gradient(circle at center center, #b14fc0 20%, #1a1a1a 100%);
+}
